@@ -1,0 +1,53 @@
+[gd_scene load_steps=5 format=3 uid="uid://bgf14ja037s15"]
+
+[ext_resource type="Script" path="res://scenes/player/player_script.gd" id="1_mr4qx"]
+[ext_resource type="Texture2D" uid="uid://c2vrxx51010m6" path="res://icon.svg" id="2_vltva"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mr4qx"]
+size = Vector2(32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mr4qx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_vltva")
+}],
+"loop": true,
+"name": &"debug",
+"speed": 5.0
+}]
+
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("_hitbox", "_animSprite", "_rcUp", "_rcDown", "_rcRight", "_rcLeft")]
+collision_mask = 6
+script = ExtResource("1_mr4qx")
+_hitbox = NodePath("PlayerHitbox")
+_animSprite = NodePath("AnimatedSprite2D")
+_rcUp = NodePath("RayCastUP")
+_rcDown = NodePath("RayCastDown")
+_rcRight = NodePath("RayCastRight")
+_rcLeft = NodePath("RayCastLeft")
+
+[node name="PlayerHitbox" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_mr4qx")
+debug_color = Color(0.989938, 0, 0.284464, 0.42)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+sprite_frames = SubResource("SpriteFrames_mr4qx")
+animation = &"debug"
+
+[node name="RayCastUP" type="RayCast2D" parent="."]
+target_position = Vector2(0, -32)
+collision_mask = 4
+
+[node name="RayCastDown" type="RayCast2D" parent="."]
+target_position = Vector2(0, 32)
+collision_mask = 4
+
+[node name="RayCastRight" type="RayCast2D" parent="."]
+target_position = Vector2(32, 0)
+collision_mask = 4
+
+[node name="RayCastLeft" type="RayCast2D" parent="."]
+target_position = Vector2(-32, 0)
+collision_mask = 4
