@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c2vrxx51010m6"
-path="res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex"
+uid="uid://dgbky6dfja8dv"
+path="res://.godot/imported/Heladeria (4) chorreado.png-f4ea84cd04e71ae046f52a2ee281c8d0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://icon.svg"
-dest_files=["res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex"]
+source_file="res://Assets/burgatorio-borrador/Heladeria (4) chorreado.png"
+dest_files=["res://.godot/imported/Heladeria (4) chorreado.png-f4ea84cd04e71ae046f52a2ee281c8d0.ctex"]
 
 [params]
 
@@ -38,6 +38,3 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
-svg/scale=1.0
-editor/scale_with_editor_scale=false
-editor/convert_colors_with_editor_theme=false
