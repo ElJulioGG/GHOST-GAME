@@ -4,6 +4,7 @@ extends Area2D
 @export_category("Nodes")
 @export var _hitbox : CollisionShape2D 
 
+var _canInteract : bool = true
 var _whenInteracted : Callable = _debug_interaction
 
 func _debug_interaction() -> void:
@@ -18,4 +19,5 @@ func _on_body_exited(body: Node2D) -> void:
 		body._clear_interactable(self)
 
 func _interaction() -> void:
+	_canInteract = false
 	_whenInteracted.call()

@@ -1,36 +1,45 @@
-[gd_scene load_steps=5 format=3 uid="uid://dqaae122iqax5"]
+[gd_scene load_steps=5 format=3 uid="uid://b576waw27jt0e"]
 
-[ext_resource type="Script" uid="uid://ma5jlxqcsbyq" path="res://scenes/interactables/burgertory/fryer_extension.gd" id="1_81ain"]
-[ext_resource type="Texture2D" uid="uid://cfb3ovepuxbpj" path="res://icon.svg" id="2_nc7wv"]
+[ext_resource type="Script" uid="uid://ce533tf4rb27o" path="res://scenes/interactables/burgertory/fryer_extension.gd" id="1_81ain"]
+[ext_resource type="Texture2D" uid="uid://c2vrxx51010m6" path="res://icon.svg" id="2_ev024"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7oi3y"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i8ya4"]
 size = Vector2(30, 30)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_ilea7"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_i8ya4"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_nc7wv")
+"texture": ExtResource("2_ev024")
 }],
 "loop": true,
 "name": &"default",
 "speed": 5.0
 }]
 
-[node name="Fryer" type="Area2D" node_paths=PackedStringArray("fryTimer")]
+[node name="Fryer" type="Area2D" node_paths=PackedStringArray("_fryTimer", "_burnTimer")]
+collision_layer = 2
 script = ExtResource("1_81ain")
-fryTimer = NodePath("FryerTimer")
-metadata/_custom_type_script = "uid://cwqu6o3rfcr3n"
+_fryTimer = NodePath("FryerTimer")
+_burnTimer = NodePath("BurntTimer")
 
-[node name="FyerHitbox" type="CollisionShape2D" parent="."]
+[node name="InteractableHitbox" type="CollisionShape2D" parent="."]
 position = Vector2(0, -32)
-shape = SubResource("RectangleShape2D_7oi3y")
+shape = SubResource("RectangleShape2D_i8ya4")
 
-[node name="FryerAnimSprite" type="AnimatedSprite2D" parent="."]
+[node name="InteractableAnimsprite" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.25, 0.25)
-sprite_frames = SubResource("SpriteFrames_ilea7")
+sprite_frames = SubResource("SpriteFrames_i8ya4")
 
 [node name="FryerTimer" type="Timer" parent="."]
-process_callback = 0
-wait_time = 3.0
+wait_time = 4.0
 one_shot = true
+
+[node name="BurntTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="timeout" from="FryerTimer" to="." method="_on_fryer_timer_timeout"]
+[connection signal="timeout" from="BurntTimer" to="." method="_on_burnt_timer_timeout"]
