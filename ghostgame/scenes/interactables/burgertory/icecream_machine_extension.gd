@@ -21,13 +21,13 @@ func _icecream_minigame_over(value : int) -> void:
 	
 	match value:
 		0: 
-			print("nada pasa!")
+			print()
 		1:
-			print("minijuego bueno")
+			globalScript._currentPlayer._give_pickup_to_player("res://scenes/pickups/icecream_pickup.tscn")
 		2:
-			print("minijuego malo")
+			globalScript._currentPlayer._give_pickup_to_player("res://scenes/pickups/bad_icecream_pickup.tscn")
 	
-	self.remove_child(_minigameRef)
+	self.remove_child.call_deferred(_minigameRef)
 	_minigameRef.queue_free()
 	globalScript._currentPlayer._canAct = true
 	_canInteract = true

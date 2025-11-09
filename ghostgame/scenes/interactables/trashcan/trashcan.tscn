@@ -33,7 +33,7 @@ debug_color = Color(0.995197, 0, 0.209435, 0.42)
 
 [node name="InteractableAnimsprite" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-position = Vector2(-11, 0)
+position = Vector2(-1, 2)
 rotation = -1.5708
 sprite_frames = SubResource("SpriteFrames_rv8qf")
 

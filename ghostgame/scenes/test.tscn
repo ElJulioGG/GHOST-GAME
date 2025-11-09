@@ -1,12 +1,15 @@
-[gd_scene load_steps=13 format=3 uid="uid://vhwknpbt6o5u"]
+[gd_scene load_steps=16 format=3 uid="uid://vhwknpbt6o5u"]
 
 [ext_resource type="PackedScene" uid="uid://bgf14ja037s15" path="res://scenes/player/player_scene.tscn" id="1_errlg"]
+[ext_resource type="Script" uid="uid://cagyh4socn5ej" path="res://scenes/level_script.gd" id="1_jcd4p"]
 [ext_resource type="Texture2D" uid="uid://okyej7bvvjso" path="res://Assets/Backgrounds/BASE MC FANTASMA(1).png" id="1_lpvoh"]
 [ext_resource type="PackedScene" uid="uid://dqaae122iqax5" path="res://scenes/interactables/burgertory/fryer.tscn" id="2_bl13t"]
 [ext_resource type="PackedScene" uid="uid://b0cviker8absv" path="res://scenes/interactables/reception_desk/reception_desk.tscn" id="3_iyx0m"]
 [ext_resource type="PackedScene" uid="uid://c5s8cnpcmkixs" path="res://scenes/interactables/trashcan/trashcan.tscn" id="4_74lek"]
 [ext_resource type="PackedScene" uid="uid://ddigs7cuc7snn" path="res://scenes/interactables/burgertory/icecream_machine.tscn" id="6_lpvoh"]
-[ext_resource type="PackedScene" uid="uid://bbsufspuw6h2y" path="res://scenes/interactables/burgertory/burger_stand.tscn" id="7_at5dv"]
+[ext_resource type="Texture2D" uid="uid://cdprtjxct5ini" path="res://Assets/HUD/vial/pixil-frame-0.png" id="9_uacia"]
+[ext_resource type="Texture2D" uid="uid://dqtf27jdxxae" path="res://Assets/n.png" id="10_ajshl"]
+[ext_resource type="Texture2D" uid="uid://cdmld5kkd3y6x" path="res://Assets/a.png" id="11_ghpyy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j5jx5"]
 size = Vector2(32, 1000)
@@ -23,7 +26,10 @@ size = Vector2(32, 1000)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yk7ts"]
 size = Vector2(10, 1000)
 
-[node name="Test" type="Node2D"]
+[node name="Test" type="Node2D" node_paths=PackedStringArray("_pbar")]
+script = ExtResource("1_jcd4p")
+_pbar = NodePath("TextureProgressBar")
+metadata/_edit_vertical_guides_ = [48.0, 132.0]
 
 [node name="Background" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -60,18 +66,49 @@ shape = SubResource("RectangleShape2D_yk7ts")
 [node name="Player" parent="." instance=ExtResource("1_errlg")]
 position = Vector2(272, 248)
 
-[node name="ReceptionDesk" parent="." instance=ExtResource("3_iyx0m")]
+[node name="Orders" type="Node2D" parent="."]
+
+[node name="ReceptionDesk" parent="Orders" instance=ExtResource("3_iyx0m")]
 position = Vector2(144, 120)
 
-[node name="Fryer" parent="." instance=ExtResource("2_bl13t")]
-position = Vector2(71, 231)
+[node name="ReceptionDesk2" parent="Orders" instance=ExtResource("3_iyx0m")]
+position = Vector2(112, 120)
 
-[node name="TrashCan" parent="." instance=ExtResource("4_74lek")]
+[node name="ReceptionDesk3" parent="Orders" instance=ExtResource("3_iyx0m")]
+position = Vector2(176, 120)
+
+[node name="ReceptionDesk4" parent="Orders" instance=ExtResource("3_iyx0m")]
+position = Vector2(208, 120)
+_orderWeights = Array[float]([100.0, 0.0, 0.0])
+
+[node name="Machines" type="Node2D" parent="."]
+
+[node name="TrashCan" parent="Machines" instance=ExtResource("4_74lek")]
 position = Vector2(304, 152)
 rotation = 1.5708
 
-[node name="IceCreamMachine" parent="." instance=ExtResource("6_lpvoh")]
+[node name="IceCreamMachine" parent="Machines" instance=ExtResource("6_lpvoh")]
 position = Vector2(144, 280)
 
-[node name="BurgerStand" parent="." instance=ExtResource("7_at5dv")]
-position = Vector2(208, 280)
+[node name="Fryer" parent="Machines" instance=ExtResource("2_bl13t")]
+position = Vector2(71, 232)
+
+[node name="ProgressBar" type="Sprite2D" parent="."]
+z_index = 1000
+texture_filter = 1
+position = Vector2(62, 32)
+scale = Vector2(2, 2)
+texture = ExtResource("9_uacia")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+z_index = 4096
+offset_left = 44.0
+offset_top = 26.0
+offset_right = 128.0
+offset_bottom = 34.0
+scale = Vector2(0.5, 0.5)
+max_value = 200.0
+step = 0.01
+value = 200.0
+texture_under = ExtResource("10_ajshl")
+texture_progress = ExtResource("11_ghpyy")

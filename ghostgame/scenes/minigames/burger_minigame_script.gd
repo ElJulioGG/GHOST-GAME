@@ -35,10 +35,7 @@ func _on_quemado_timer_timeout() -> void:
 	_cookButton.disabled = true
 
 func _on_x_button_pressed() -> void:
-	lista = ingredientes.duplicate()
-	lista.shuffle()
-	print("Lista mandada")
-	print(lista)
+	_interactableParent._burger_minigame_over(0)
 
 func _on_lechuga_pressed() -> void:
 	ordenar.append("lechuga") # Replace with function body.

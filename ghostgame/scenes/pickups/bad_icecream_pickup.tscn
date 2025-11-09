@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://cn7ci4a7qbi6a"]
+
+[ext_resource type="Texture2D" uid="uid://dpotst12o510p" path="res://Assets/burgatorio-borrador/Helado sprite (malo).png" id="1_db1j1"]
+[ext_resource type="Script" uid="uid://dj0o4cr5x0je4" path="res://scenes/pickups/pickup_script.gd" id="1_oms4m"]
+
+[node name="BadIcecreamPickup" type="Sprite2D"]
+texture_filter = 1
+texture = ExtResource("1_db1j1")
+script = ExtResource("1_oms4m")
+_pickupName = "SHIT"

@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cg8ldsdqwokfl"
+path="res://.godot/imported/papas quemadas.ogg-a9fc21a052731ab2c0f3a30564a09e7a.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/sound/papas quemadas.ogg"
+dest_files=["res://.godot/imported/papas quemadas.ogg-a9fc21a052731ab2c0f3a30564a09e7a.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

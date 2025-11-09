@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dxlj1f0bt10yy"]
+
+[ext_resource type="Texture2D" uid="uid://ldrkp2yjhxfm" path="res://Assets/burgatorio-borrador/Helado sprite.png" id="1_gl1vn"]
+[ext_resource type="Script" uid="uid://dj0o4cr5x0je4" path="res://scenes/pickups/pickup_script.gd" id="1_vw3uf"]
+
+[node name="IceCreamPickup" type="Sprite2D"]
+texture_filter = 1
+texture = ExtResource("1_gl1vn")
+script = ExtResource("1_vw3uf")
+_pickupName = "ICECREAM"

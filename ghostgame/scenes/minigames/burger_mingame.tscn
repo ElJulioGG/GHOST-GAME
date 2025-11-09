@@ -16,26 +16,21 @@ _lechuButton = NodePath("Lechuga")
 _tomButton = NodePath("Tomate")
 _quesButton = NodePath("Queso")
 
-[node name="Panel" type="Panel" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="Panel" parent="CanvasLayer"]
 offset_left = -10.0
 offset_top = -10.0
 offset_right = 849.0
 offset_bottom = 489.0
 
-[node name="Panel2" type="Panel" parent="Panel"]
+[node name="Panel2" type="Panel" parent="CanvasLayer/Panel"]
 layout_mode = 0
 offset_left = 110.0
 offset_top = 60.0
 offset_right = 526.0
 offset_bottom = 316.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_ji5cu")
-
-[node name="QuemadoTimer" type="Timer" parent="."]
-wait_time = 18.0
-one_shot = true
-
-[node name="CocidoTimer" type="Timer" parent="."]
-wait_time = 12.0
 
 [node name="CookButton" type="Button" parent="."]
 offset_left = 255.0
@@ -91,8 +86,13 @@ text = "Mandar"
 offset_right = 8.0
 offset_bottom = 8.0
 
-[connection signal="timeout" from="QuemadoTimer" to="." method="_on_quemado_timer_timeout"]
-[connection signal="timeout" from="CocidoTimer" to="." method="_on_cocido_timer_timeout"]
+[node name="CocidoTimer" type="Timer" parent="."]
+wait_time = 12.0
+
+[node name="QuemadoTimer" type="Timer" parent="."]
+wait_time = 18.0
+one_shot = true
+
 [connection signal="toggled" from="CookButton" to="." method="_on_burguer_button_toggled"]
 [connection signal="pressed" from="XButton" to="." method="_on_x_button_pressed"]
 [connection signal="pressed" from="Lechuga" to="." method="_on_lechuga_pressed"]
@@ -101,3 +101,5 @@ offset_bottom = 8.0
 [connection signal="pressed" from="Tomate" to="." method="_on_tomate_pressed"]
 [connection signal="pressed" from="Mandar" to="." method="_on_mandar_pressed"]
 [connection signal="pressed" from="Reset" to="." method="_on_reset_pressed"]
+[connection signal="timeout" from="CocidoTimer" to="." method="_on_cocido_timer_timeout"]
+[connection signal="timeout" from="QuemadoTimer" to="." method="_on_quemado_timer_timeout"]

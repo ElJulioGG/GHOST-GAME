@@ -3,12 +3,14 @@ extends Interactable
 @export_category("Fryer")
 @export var _fryTimer : Timer
 @export var _burnTimer : Timer
+@export var _ASP : AudioStreamPlayer
 
 @export var _onTime : bool = false
 
 func _start_frying() -> void:
 	_animSprite.play("frying")
 	_fryTimer.start()
+	_ASP.play()
 	# instantiate progress bar, give it same time as fry timer
 
 func _on_fryer_timer_timeout() -> void:

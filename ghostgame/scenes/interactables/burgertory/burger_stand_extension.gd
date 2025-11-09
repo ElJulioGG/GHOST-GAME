@@ -15,7 +15,6 @@ func _call_burger_minigame() -> void:
 	self.add_child(newMinigame)
 	_minigameRef = newMinigame
 	_minigameRef._interactableParent = self
-	_minigameRef.global_position = Vector2(144,280)
 
 func _burger_minigame_over(value : int)-> void:
 	

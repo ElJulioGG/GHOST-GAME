@@ -1,40 +1,29 @@
-[gd_scene load_steps=5 format=3 uid="uid://b0cviker8absv"]
+[gd_scene load_steps=6 format=3 uid="uid://b0cviker8absv"]
 
 [ext_resource type="Script" uid="uid://166dyqfudn56" path="res://scenes/interactables/reception_desk/reception_desk_extension.gd" id="1_26uhr"]
 [ext_resource type="Texture2D" uid="uid://c2vrxx51010m6" path="res://icon.svg" id="2_ahhna"]
+[ext_resource type="AudioStream" uid="uid://drv1cwpbl3idh" path="res://Assets/sound/orden_correcta.ogg" id="3_5oruf"]
+[ext_resource type="AudioStream" uid="uid://dwwl3pvvfov1q" path="res://Assets/sound/orden_mala_2.ogg" id="4_41khk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i8ya4"]
 size = Vector2(30, 30)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_i8ya4"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_ahhna")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
-[node name="ReceptionDesk" type="Area2D" node_paths=PackedStringArray("_orderTimer", "_idleTimer", "_hitbox", "_animSprite")]
+[node name="ReceptionDesk" type="Area2D" node_paths=PackedStringArray("_clientSprite", "_orderSprite", "_orderTimer", "_idleTimer", "_hitbox", "_animSprite")]
 collision_layer = 2
 script = ExtResource("1_26uhr")
+_clientSprite = NodePath("ClientSprite")
+_orderSprite = NodePath("OrderSprite")
 _orderTimer = NodePath("OrderTimer")
 _idleTimer = NodePath("IdleTimer")
 _possibleOrders = Array[String](["FRIES", "ICECREAM", "BURGER"])
 _orderWeights = Array[float]([50.0, 30.0, 20.0])
 _hitbox = NodePath("InteractableHitbox")
-_animSprite = NodePath("InteractableAnimsprite")
+_animSprite = NodePath("")
 
 [node name="InteractableHitbox" type="CollisionShape2D" parent="."]
 position = Vector2(0, 32)
 shape = SubResource("RectangleShape2D_i8ya4")
 debug_color = Color(0.834599, 0.00130627, 0.93523, 0.42)
-
-[node name="InteractableAnimsprite" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.25, 0.25)
-sprite_frames = SubResource("SpriteFrames_i8ya4")
 
 [node name="OrderTimer" type="Timer" parent="."]
 process_callback = 0
@@ -44,7 +33,22 @@ autostart = true
 [node name="IdleTimer" type="Timer" parent="."]
 wait_time = 5.0
 one_shot = true
-autostart = true
+
+[node name="ClientSprite" type="Sprite2D" parent="."]
+position = Vector2(0, -85)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_ahhna")
+
+[node name="OrderSprite" type="Sprite2D" parent="."]
+position = Vector2(60, -80)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_ahhna")
+
+[node name="Good" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_5oruf")
+
+[node name="Bad" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_41khk")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

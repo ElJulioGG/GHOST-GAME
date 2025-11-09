@@ -10,7 +10,6 @@ var _state : int = 0
 var _interactableParent : Interactable = null
 
 func _on_fill_button_button_down() -> void:
-	print("inicio de helado")
 	_completedTimer.start()
 
 func _on_fill_button_button_up() -> void:
@@ -25,7 +24,6 @@ func _on_exceded_timer_timeout() -> void:
 	_check_status()
 
 func _check_status() -> void:
-	print("fin de helado")
 	_completedTimer.stop()
 	_excededTimer.stop()
 	_fillButton.disabled = true
