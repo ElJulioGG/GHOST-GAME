@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://dm0ye5lf3pjw5"]
+[gd_scene load_steps=9 format=3 uid="uid://dm0ye5lf3pjw5"]
 
 [ext_resource type="Script" uid="uid://qbrp507ajn74" path="res://scenes/menus/game_over_menu.gd" id="1_w420q"]
 [ext_resource type="Texture2D" uid="uid://cviymcg0oagg6" path="res://Assets/Backgrounds/fireback.jpg" id="1_yoi8s"]
 [ext_resource type="Script" uid="uid://lbxnles05c12" path="res://scripts_j/float_UI_Component.gd" id="2_l4tjb"]
+[ext_resource type="FontFile" uid="uid://depubakwitka0" path="res://Assets/Fonts/DoubleBass-Bold-trial.ttf" id="3_bx34f"]
 [ext_resource type="Script" uid="uid://yji5fyd27trl" path="res://scripts_j/animation_component.gd" id="3_riy1b"]
 [ext_resource type="Script" uid="uid://c8kuitejkhigd" path="res://scenes/menus/fadeOutPanel.gd" id="5_l4tjb"]
 
@@ -40,6 +41,7 @@ offset_right = 296.0
 offset_bottom = 82.0
 grow_horizontal = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_bx34f")
 theme_override_font_sizes/font_size = 51
 text = "GAME OVER"
 horizontal_alignment = 1
@@ -65,6 +67,7 @@ theme_override_constants/separation = 30
 [node name="Button" type="Button" parent="PanelPrincipal"]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("3_bx34f")
 text = "Reintentar"
 
 [node name="AnimationComponent" type="Node" parent="PanelPrincipal/Button"]
@@ -76,6 +79,7 @@ metadata/_custom_type_script = "uid://yji5fyd27trl"
 [node name="Button2" type="Button" parent="PanelPrincipal"]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("3_bx34f")
 text = "Menu"
 
 [node name="AnimationComponent" type="Node" parent="PanelPrincipal/Button2"]
