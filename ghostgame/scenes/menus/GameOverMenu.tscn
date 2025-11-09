@@ -1,0 +1,103 @@
+[gd_scene load_steps=9 format=3 uid="uid://dl1elqd7mycmx"]
+
+[ext_resource type="Script" path="res://scenes/menus/game_over_menu.gd" id="1_w420q"]
+[ext_resource type="Texture2D" uid="uid://cviymcg0oagg6" path="res://Assets/Backgrounds/fireback.jpg" id="1_yoi8s"]
+[ext_resource type="Script" uid="uid://lbxnles05c12" path="res://scripts_j/float_UI_Component.gd" id="2_l4tjb"]
+[ext_resource type="FontFile" uid="uid://depubakwitka0" path="res://Assets/Fonts/DoubleBass-Bold-trial.ttf" id="3_bx34f"]
+[ext_resource type="Script" uid="uid://yji5fyd27trl" path="res://scripts_j/animation_component.gd" id="3_riy1b"]
+[ext_resource type="Script" path="res://scenes/menus/fadeOutPanel.gd" id="5_l4tjb"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xcd12"]
+texture = ExtResource("1_yoi8s")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w420q"]
+
+[node name="GameOverMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_w420q")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_xcd12")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -295.0
+offset_top = 12.0
+offset_right = 296.0
+offset_bottom = 82.0
+grow_horizontal = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_bx34f")
+theme_override_font_sizes/font_size = 51
+text = "GAME OVER"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("2_l4tjb")
+
+[node name="PanelPrincipal" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(0, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -75.0
+offset_right = 100.0
+offset_bottom = 139.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 30
+
+[node name="Button" type="Button" parent="PanelPrincipal"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("3_bx34f")
+text = "Reintentar"
+
+[node name="AnimationComponent" type="Node" parent="PanelPrincipal/Button"]
+script = ExtResource("3_riy1b")
+hover_scale = Vector2(1.3, 1.2)
+time = 0.2
+metadata/_custom_type_script = "uid://yji5fyd27trl"
+
+[node name="Button2" type="Button" parent="PanelPrincipal"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("3_bx34f")
+text = "Menu"
+
+[node name="AnimationComponent" type="Node" parent="PanelPrincipal/Button2"]
+script = ExtResource("3_riy1b")
+hover_scale = Vector2(1.3, 1.2)
+time = 0.2
+metadata/_custom_type_script = "uid://yji5fyd27trl"
+
+[node name="Panel2" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_w420q")
+script = ExtResource("5_l4tjb")
+fade_out_time = 3.0
+
+[connection signal="pressed" from="PanelPrincipal/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="PanelPrincipal/Button2" to="." method="_on_button_2_pressed"]
