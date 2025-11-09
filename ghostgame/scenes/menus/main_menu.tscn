@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://mv4jvucavvcl"]
+[gd_scene load_steps=16 format=3 uid="uid://mv4jvucavvcl"]
 
 [ext_resource type="Script" uid="uid://dwf0kpkp3apbb" path="res://scenes/menus/main_menu.gd" id="1_ovrgc"]
 [ext_resource type="Script" uid="uid://yji5fyd27trl" path="res://scripts_j/animation_component.gd" id="2_2o76q"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cbhyn7q46ocrn" path="res://Assets/Sprites/UI/clown (1).png" id="4_1hnlc"]
 [ext_resource type="Texture2D" uid="uid://exxeld8j38u4" path="res://Assets/Sprites/UI/wood_panel.png" id="4_6bivr"]
 [ext_resource type="Texture2D" uid="uid://dp4y47kd1bcgq" path="res://Assets/Sprites/UI/menu-3.png" id="4_8r73w"]
+[ext_resource type="FontFile" uid="uid://depubakwitka0" path="res://Assets/Fonts/DoubleBass-Bold-trial.ttf" id="6_1hnlc"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vue75"]
 texture = ExtResource("2_ng0o5")
@@ -53,7 +54,7 @@ offset_top = 38.0
 offset_right = 292.0
 offset_bottom = 61.0
 script = ExtResource("3_ng0o5")
-float_amplitude = Vector2(-16.3, -3.4)
+float_amplitude = Vector2(-8.3, -3.4)
 float_speed = -1.3
 hover_scale = 1.14
 hover_time = 0.18
@@ -108,6 +109,7 @@ theme_override_constants/separation = 30
 [node name="Button" type="Button" parent="PanelPrincipal"]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("6_1hnlc")
 text = "Jugar"
 
 [node name="AnimationComponent" type="Node" parent="PanelPrincipal/Button"]
@@ -116,9 +118,22 @@ hover_scale = Vector2(1.3, 1.2)
 time = 0.2
 metadata/_custom_type_script = "uid://yji5fyd27trl"
 
+[node name="Button2" type="Button" parent="PanelPrincipal"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("6_1hnlc")
+text = "Instrucciones"
+
+[node name="AnimationComponent" type="Node" parent="PanelPrincipal/Button2"]
+script = ExtResource("2_2o76q")
+hover_scale = Vector2(1.3, 1.2)
+time = 0.2
+metadata/_custom_type_script = "uid://yji5fyd27trl"
+
 [node name="Button3" type="Button" parent="PanelPrincipal"]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("6_1hnlc")
 text = "Creditos
 "
 
@@ -131,6 +146,7 @@ metadata/_custom_type_script = "uid://yji5fyd27trl"
 [node name="Button4" type="Button" parent="PanelPrincipal"]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("6_1hnlc")
 text = "Salir"
 
 [node name="AnimationComponent" type="Node" parent="PanelPrincipal/Button4"]
@@ -140,7 +156,6 @@ time = 0.2
 metadata/_custom_type_script = "uid://yji5fyd27trl"
 
 [node name="PanelInstrucciones" type="Panel" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -177,6 +192,7 @@ offset_right = 47.0
 offset_bottom = 117.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("6_1hnlc")
 text = "Instrucciones:
 WASD
 Espacio
@@ -198,23 +214,7 @@ hover_scale = Vector2(1.3, 1.2)
 time = 0.2
 metadata/_custom_type_script = "uid://yji5fyd27trl"
 
-[node name="Button2" type="Button" parent="PanelInstrucciones"]
-layout_mode = 2
-offset_left = 99.0
-offset_top = 165.0
-offset_right = 299.0
-offset_bottom = 196.0
-size_flags_vertical = 3
-text = "Instrucciones"
-
-[node name="AnimationComponent" type="Node" parent="PanelInstrucciones/Button2"]
-script = ExtResource("2_2o76q")
-hover_scale = Vector2(1.3, 1.2)
-time = 0.2
-metadata/_custom_type_script = "uid://yji5fyd27trl"
-
 [node name="PanelCreditos" type="Panel" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -251,6 +251,7 @@ offset_right = 47.0
 offset_bottom = 117.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("6_1hnlc")
 text = "Integrantes:
 Julio 
 Rodrigo
@@ -277,8 +278,8 @@ time = 0.4
 metadata/_custom_type_script = "uid://yji5fyd27trl"
 
 [connection signal="pressed" from="PanelPrincipal/Button" to="." method="_on_Play_pressed"]
+[connection signal="pressed" from="PanelPrincipal/Button2" to="." method="_on_Instrucciones_pressed"]
 [connection signal="pressed" from="PanelPrincipal/Button3" to="." method="_on_Creditos_pressed"]
 [connection signal="pressed" from="PanelPrincipal/Button4" to="." method="_on_Exit_pressed"]
 [connection signal="pressed" from="PanelInstrucciones/ButtonClose" to="." method="_on_button_close_pressed"]
-[connection signal="pressed" from="PanelInstrucciones/Button2" to="." method="_on_Instrucciones_pressed"]
 [connection signal="pressed" from="PanelCreditos/ButtonClose" to="." method="_on_button_close_pressed"]
