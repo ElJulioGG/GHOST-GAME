@@ -1,17 +1,13 @@
-[gd_scene load_steps=13 format=3 uid="uid://mv4jvucavvcl"]
+[gd_scene load_steps=11 format=3 uid="uid://mv4jvucavvcl"]
 
+[ext_resource type="Texture2D" uid="uid://br825qxprlwk4" path="res://Assets/Backgrounds/paltas (1).jpg" id="1_l6cm7"]
 [ext_resource type="Script" uid="uid://dwf0kpkp3apbb" path="res://scenes/menus/main_menu.gd" id="1_ovrgc"]
 [ext_resource type="Script" uid="uid://yji5fyd27trl" path="res://scripts_j/animation_component.gd" id="2_2o76q"]
-[ext_resource type="Texture2D" uid="uid://c1kse6lu6wupg" path="res://Assets/Backgrounds/espacio de fondo_mall.png" id="2_ng0o5"]
 [ext_resource type="Script" uid="uid://lbxnles05c12" path="res://scripts_j/float_UI_Component.gd" id="3_ng0o5"]
 [ext_resource type="Texture2D" uid="uid://exxeld8j38u4" path="res://Assets/Sprites/UI/wood_panel.png" id="4_6bivr"]
-[ext_resource type="Texture2D" uid="uid://dp4y47kd1bcgq" path="res://Assets/Sprites/UI/menu-3.png" id="4_8r73w"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vue75"]
-texture = ExtResource("2_ng0o5")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1hnlc"]
-texture = ExtResource("4_8r73w")
+texture = ExtResource("1_l6cm7")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ovrgc"]
 
@@ -22,7 +18,7 @@ region_rect = Rect2(0, 0, 48, 48)
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2o76q"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6bivr"]
-texture = ExtResource("4_6bivr")
+texture = ExtResource("1_l6cm7")
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -54,17 +50,18 @@ offset_bottom = 82.0
 grow_horizontal = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 51
+text = "UNTITLED GHOST GAME"
 horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("3_ng0o5")
-
-[node name="Panel" type="Panel" parent="Label"]
-layout_mode = 0
-offset_left = 103.205
-offset_top = -105.14
-offset_right = 503.205
-offset_bottom = 195.46
-theme_override_styles/panel = SubResource("StyleBoxTexture_1hnlc")
+float_amplitude = null
+float_frequency = null
+float_offset = null
+hover_scale = null
+hover_time = null
+hover_transition = null
+hover_ease = null
+use_perlin_noise = null
 
 [node name="PanelPrincipal" type="VBoxContainer" parent="."]
 custom_minimum_size = Vector2(0, 1)
@@ -89,8 +86,7 @@ text = "Jugar"
 
 [node name="AnimationComponent" type="Node" parent="PanelPrincipal/Button"]
 script = ExtResource("2_2o76q")
-hover_scale = Vector2(1.3, 1.2)
-time = 0.2
+hover_scale = Vector2(1.3, 1.1)
 metadata/_custom_type_script = "uid://yji5fyd27trl"
 
 [node name="Button2" type="Button" parent="PanelPrincipal"]
@@ -100,8 +96,7 @@ text = "Instrucciones"
 
 [node name="AnimationComponent" type="Node" parent="PanelPrincipal/Button2"]
 script = ExtResource("2_2o76q")
-hover_scale = Vector2(1.3, 1.2)
-time = 0.2
+hover_scale = Vector2(1.3, 1.1)
 metadata/_custom_type_script = "uid://yji5fyd27trl"
 
 [node name="Button3" type="Button" parent="PanelPrincipal"]
@@ -112,8 +107,7 @@ text = "Creditos
 
 [node name="AnimationComponent" type="Node" parent="PanelPrincipal/Button3"]
 script = ExtResource("2_2o76q")
-hover_scale = Vector2(1.3, 1.2)
-time = 0.2
+hover_scale = Vector2(1.3, 1.1)
 metadata/_custom_type_script = "uid://yji5fyd27trl"
 
 [node name="Button4" type="Button" parent="PanelPrincipal"]
@@ -123,12 +117,10 @@ text = "Salir"
 
 [node name="AnimationComponent" type="Node" parent="PanelPrincipal/Button4"]
 script = ExtResource("2_2o76q")
-hover_scale = Vector2(1.3, 1.2)
-time = 0.2
+hover_scale = Vector2(1.3, 1.1)
 metadata/_custom_type_script = "uid://yji5fyd27trl"
 
 [node name="PanelInstrucciones" type="Panel" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -152,25 +144,6 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_2o76q")
 
-[node name="Label" type="Label" parent="PanelInstrucciones/Panel"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -47.0
-offset_top = -88.0
-offset_right = 47.0
-offset_bottom = 117.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Instrucciones:
-WASD
-Espacio
-"
-horizontal_alignment = 1
-
 [node name="ButtonClose" type="Button" parent="PanelInstrucciones"]
 layout_mode = 1
 offset_left = 220.0
@@ -182,12 +155,10 @@ text = "X"
 
 [node name="AnimationComponent" type="Node" parent="PanelInstrucciones/ButtonClose"]
 script = ExtResource("2_2o76q")
-hover_scale = Vector2(1.3, 1.2)
-time = 0.2
+hover_scale = Vector2(1.3, 1.1)
 metadata/_custom_type_script = "uid://yji5fyd27trl"
 
 [node name="PanelCreditos" type="Panel" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -211,29 +182,6 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_6bivr")
 
-[node name="Label" type="Label" parent="PanelCreditos/Panel"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -47.0
-offset_top = -88.0
-offset_right = 47.0
-offset_bottom = 117.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Integrantes:
-Julio 
-Rodrigo
-Tark
-Pietro
-MAca
-Pinwino
-"
-horizontal_alignment = 1
-
 [node name="ButtonClose" type="Button" parent="PanelCreditos"]
 layout_mode = 0
 offset_left = 220.0
@@ -246,7 +194,6 @@ text = "X"
 [node name="AnimationComponent" type="Node" parent="PanelCreditos/ButtonClose"]
 script = ExtResource("2_2o76q")
 hover_scale = Vector2(1.3, 1.1)
-time = 0.4
 metadata/_custom_type_script = "uid://yji5fyd27trl"
 
 [connection signal="pressed" from="PanelPrincipal/Button" to="." method="_on_Play_pressed"]

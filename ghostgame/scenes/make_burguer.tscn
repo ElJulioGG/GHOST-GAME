@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://smhr0ykk4md0"]
 
-[ext_resource type="Script" uid="uid://fuds11c1uutg" path="res://make_burguer.gd" id="1_ji5cu"]
+[ext_resource type="Script" path="res://make_burguer.gd" id="1_ji5cu"]
 
 [node name="makeBurguer" type="Node2D" node_paths=PackedStringArray("_excededTimer", "_completedTimer", "_xButton", "_cookButton", "_hambButton", "_lechuButton", "_tomButton", "_quesButton")]
 script = ExtResource("1_ji5cu")

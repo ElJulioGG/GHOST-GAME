@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dmdr3rcdoig81"]
 
-[ext_resource type="Script" uid="uid://bmpxy73qbhunb" path="res://primitive_minigame.gd" id="1_gnnud"]
+[ext_resource type="Script" path="res://primitive_minigame.gd" id="1_gnnud"]
 
 [node name="PrimitiveMinigame" type="Node2D" node_paths=PackedStringArray("_excededTimer", "_completedTimer", "_xButton", "_heladoButton")]
 script = ExtResource("1_gnnud")
