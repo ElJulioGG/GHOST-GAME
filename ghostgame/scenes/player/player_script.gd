@@ -14,6 +14,8 @@ var _movementTween : Tween
 var _currentInteractable : Interactable = null
 var _currentPickup : Pickup = null
 
+var _canAct : bool = true
+
 ################################ Visual ################################
 
 func _look_at_direction(dir : String) -> void:
@@ -90,5 +92,9 @@ func _ready() -> void:
 ################################# Physics Process #################################
 
 func _physics_process(delta: float) -> void:
+	
+	if not _canAct:
+		return
+	
 	_calculate_movement()
 	_check_interaction()

@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://bbsufspuw6h2y"]
+
+[ext_resource type="Script" uid="uid://dprft56vqf56a" path="res://scenes/interactables/burgertory/burger_stand_extension.gd" id="1_350r3"]
+[ext_resource type="PackedScene" uid="uid://smhr0ykk4md0" path="res://scenes/minigames/burger_mingame.tscn" id="2_g4ga3"]
+[ext_resource type="Texture2D" uid="uid://c2vrxx51010m6" path="res://icon.svg" id="3_rpib4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i8ya4"]
+size = Vector2(30, 30)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_i8ya4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_rpib4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="BurgerStand" type="Area2D"]
+collision_layer = 2
+script = ExtResource("1_350r3")
+_minigameScene = ExtResource("2_g4ga3")
+
+[node name="InteractableHitbox" type="CollisionShape2D" parent="."]
+position = Vector2(0, -32)
+shape = SubResource("RectangleShape2D_i8ya4")
+debug_color = Color(0.298042, 0.0531237, 0, 0.42)
+
+[node name="InteractableAnimsprite" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+sprite_frames = SubResource("SpriteFrames_i8ya4")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

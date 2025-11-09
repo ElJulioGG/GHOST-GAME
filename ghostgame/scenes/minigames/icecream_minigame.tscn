@@ -1,0 +1,59 @@
+[gd_scene load_steps=3 format=3 uid="uid://dmdr3rcdoig81"]
+
+[ext_resource type="Script" uid="uid://bmpxy73qbhunb" path="res://scenes/minigames/icecream_minigame_script.gd" id="1_dq53i"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gnnud"]
+bg_color = Color(0, 0, 0, 1)
+
+[node name="PrimitiveMinigame" type="Node2D" node_paths=PackedStringArray("_excededTimer", "_completedTimer", "_closeButton", "_fillButton")]
+script = ExtResource("1_dq53i")
+_excededTimer = NodePath("ExcededTimer")
+_completedTimer = NodePath("CompletedTimer")
+_closeButton = NodePath("CanvasLayer/Panel/Panel/CloseButton")
+_fillButton = NodePath("CanvasLayer/Panel/Panel/FillButton")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 849.0
+offset_bottom = 489.0
+
+[node name="Panel" type="Panel" parent="CanvasLayer/Panel"]
+layout_mode = 0
+offset_left = 110.0
+offset_top = 60.0
+offset_right = 526.0
+offset_bottom = 316.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_gnnud")
+
+[node name="CloseButton" type="Button" parent="CanvasLayer/Panel/Panel"]
+layout_mode = 0
+offset_left = 85.0
+offset_top = 68.0
+offset_right = 116.0
+offset_bottom = 99.0
+text = "X"
+
+[node name="FillButton" type="Button" parent="CanvasLayer/Panel/Panel"]
+layout_mode = 0
+offset_left = 103.0
+offset_top = 20.0
+offset_right = 166.0
+offset_bottom = 51.0
+text = "Helado"
+
+[node name="ExcededTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="CompletedTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[connection signal="pressed" from="CanvasLayer/Panel/Panel/CloseButton" to="." method="_on_close_button_pressed"]
+[connection signal="button_down" from="CanvasLayer/Panel/Panel/FillButton" to="." method="_on_fill_button_button_down"]
+[connection signal="button_up" from="CanvasLayer/Panel/Panel/FillButton" to="." method="_on_fill_button_button_up"]
+[connection signal="timeout" from="ExcededTimer" to="." method="_on_exceded_timer_timeout"]
+[connection signal="timeout" from="CompletedTimer" to="." method="_on_completed_timer_timeout"]

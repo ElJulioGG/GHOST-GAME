@@ -1,16 +1,77 @@
-[gd_scene load_steps=4 format=3 uid="uid://vhwknpbt6o5u"]
+[gd_scene load_steps=13 format=3 uid="uid://vhwknpbt6o5u"]
 
 [ext_resource type="PackedScene" uid="uid://bgf14ja037s15" path="res://scenes/player/player_scene.tscn" id="1_errlg"]
+[ext_resource type="Texture2D" uid="uid://okyej7bvvjso" path="res://Assets/Backgrounds/BASE MC FANTASMA(1).png" id="1_lpvoh"]
 [ext_resource type="PackedScene" uid="uid://dqaae122iqax5" path="res://scenes/interactables/burgertory/fryer.tscn" id="2_bl13t"]
 [ext_resource type="PackedScene" uid="uid://b0cviker8absv" path="res://scenes/interactables/reception_desk/reception_desk.tscn" id="3_iyx0m"]
+[ext_resource type="PackedScene" uid="uid://c5s8cnpcmkixs" path="res://scenes/interactables/trashcan/trashcan.tscn" id="4_74lek"]
+[ext_resource type="PackedScene" uid="uid://ddigs7cuc7snn" path="res://scenes/interactables/burgertory/icecream_machine.tscn" id="6_lpvoh"]
+[ext_resource type="PackedScene" uid="uid://bbsufspuw6h2y" path="res://scenes/interactables/burgertory/burger_stand.tscn" id="7_at5dv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j5jx5"]
+size = Vector2(32, 1000)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lpvoh"]
+size = Vector2(32, 1000)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jcd4p"]
+size = Vector2(32, 1000)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uacia"]
+size = Vector2(32, 1000)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yk7ts"]
+size = Vector2(10, 1000)
 
 [node name="Test" type="Node2D"]
 
-[node name="Player" parent="." instance=ExtResource("1_errlg")]
-position = Vector2(272, 272)
+[node name="Background" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(320, 180)
+texture = ExtResource("1_lpvoh")
 
-[node name="Fryer" parent="." instance=ExtResource("2_bl13t")]
-position = Vector2(186, 269)
+[node name="Statics" type="StaticBody2D" parent="."]
+position = Vector2(71, 264)
+collision_layer = 4
+collision_mask = 5
+
+[node name="Col1" type="CollisionShape2D" parent="Statics"]
+position = Vector2(-25, -107)
+shape = SubResource("RectangleShape2D_j5jx5")
+
+[node name="Col2" type="CollisionShape2D" parent="Statics"]
+position = Vector2(170, 50)
+rotation = -1.57079
+shape = SubResource("RectangleShape2D_lpvoh")
+
+[node name="Col4" type="CollisionShape2D" parent="Statics"]
+position = Vector2(523, -107)
+shape = SubResource("RectangleShape2D_jcd4p")
+
+[node name="Col5" type="CollisionShape2D" parent="Statics"]
+position = Vector2(249, -144)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_uacia")
+
+[node name="Col6" type="CollisionShape2D" parent="Statics"]
+position = Vector2(249, -532)
+shape = SubResource("RectangleShape2D_yk7ts")
+
+[node name="Player" parent="." instance=ExtResource("1_errlg")]
+position = Vector2(272, 248)
 
 [node name="ReceptionDesk" parent="." instance=ExtResource("3_iyx0m")]
-position = Vector2(276, 175)
+position = Vector2(144, 120)
+
+[node name="Fryer" parent="." instance=ExtResource("2_bl13t")]
+position = Vector2(71, 231)
+
+[node name="TrashCan" parent="." instance=ExtResource("4_74lek")]
+position = Vector2(304, 152)
+rotation = 1.5708
+
+[node name="IceCreamMachine" parent="." instance=ExtResource("6_lpvoh")]
+position = Vector2(144, 280)
+
+[node name="BurgerStand" parent="." instance=ExtResource("7_at5dv")]
+position = Vector2(208, 280)

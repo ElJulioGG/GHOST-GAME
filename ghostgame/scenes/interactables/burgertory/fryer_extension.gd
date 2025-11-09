@@ -4,17 +4,17 @@ extends Interactable
 @export var _fryTimer : Timer
 @export var _burnTimer : Timer
 
-@export var _onTime : bool = true
+@export var _onTime : bool = false
 
 func _start_frying() -> void:
 	_animSprite.play("frying")
-	_onTime = true
 	_fryTimer.start()
 	# instantiate progress bar, give it same time as fry timer
 
 func _on_fryer_timer_timeout() -> void:
 	_animSprite.play("goodFries")
 	_burnTimer.start()
+	_onTime = true
 	_whenInteracted = _pickup_fries
 	_canInteract = true
 

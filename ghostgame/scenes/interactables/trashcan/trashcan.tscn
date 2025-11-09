@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://c5s8cnpcmkixs"]
+
+[ext_resource type="Script" uid="uid://dyqd00her1l30" path="res://scenes/interactables/trashcan/trashcan_extension.gd" id="1_rv8qf"]
+[ext_resource type="Texture2D" uid="uid://dupa8ojs7qbnm" path="res://Assets/burgatorio-borrador/otros/basuraa.png" id="2_rv8qf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i8ya4"]
+size = Vector2(30, 30)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rv8qf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_rv8qf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="TrashCan" type="Area2D"]
+collision_layer = 2
+script = ExtResource("1_rv8qf")
+
+[node name="InteractableHitbox" type="CollisionShape2D" parent="."]
+position = Vector2(32, 0)
+shape = SubResource("RectangleShape2D_i8ya4")
+debug_color = Color(0.995197, 0, 0.209435, 0.42)
+
+[node name="InteractableHitbox2" type="CollisionShape2D" parent="."]
+position = Vector2(0, 32)
+shape = SubResource("RectangleShape2D_i8ya4")
+debug_color = Color(0.995197, 0, 0.209435, 0.42)
+
+[node name="InteractableAnimsprite" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-11, 0)
+rotation = -1.5708
+sprite_frames = SubResource("SpriteFrames_rv8qf")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

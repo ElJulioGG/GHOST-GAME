@@ -11,6 +11,7 @@ extends Node2D
 @export var _quesButton: Button
 
 var compl = 0
+var _interactableParent : Interactable
 
 var ingredientes: Array[String] = ["tomate", "queso", "hamburguesa", "lechuga"]
 var lista: Array[String] = []

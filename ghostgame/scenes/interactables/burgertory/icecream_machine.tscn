@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://ddigs7cuc7snn"]
+
+[ext_resource type="Script" uid="uid://o0g2561np48k" path="res://scenes/interactables/burgertory/icecream_machine_extension.gd" id="1_hxouw"]
+[ext_resource type="Texture2D" uid="uid://c2vrxx51010m6" path="res://icon.svg" id="2_5tqog"]
+[ext_resource type="PackedScene" uid="uid://dmdr3rcdoig81" path="res://scenes/minigames/icecream_minigame.tscn" id="2_s3ahi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i8ya4"]
+size = Vector2(30, 30)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_i8ya4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_5tqog")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="IceCreamMachine" type="Area2D"]
+collision_layer = 2
+script = ExtResource("1_hxouw")
+_minigameScene = ExtResource("2_s3ahi")
+
+[node name="InteractableHitbox" type="CollisionShape2D" parent="."]
+position = Vector2(0, -32)
+shape = SubResource("RectangleShape2D_i8ya4")
+debug_color = Color(0.922405, 0.733445, 0.573057, 0.42)
+
+[node name="InteractableAnimsprite" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+sprite_frames = SubResource("SpriteFrames_i8ya4")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
