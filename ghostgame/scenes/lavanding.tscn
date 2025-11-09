@@ -1,0 +1,54 @@
+[gd_scene load_steps=2 format=3 uid="uid://ciaxc5if2y8v8"]
+
+[ext_resource type="Script" uid="uid://c8ctg4k4x332f" path="res://lavanding.gd" id="1_yreas"]
+
+[node name="lavanding" type="Node2D" node_paths=PackedStringArray("_encender", "_llenar", "_reiniciar", "_minimo", "_maximo", "_lavar")]
+script = ExtResource("1_yreas")
+_encender = NodePath("Encender")
+_llenar = NodePath("Llenar Detergente")
+_reiniciar = NodePath("Reiniciar Llenado")
+_minimo = NodePath("Minimo")
+_maximo = NodePath("Maximo")
+_lavar = NodePath("Lavar")
+
+[node name="Lavar" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+
+[node name="Encender" type="Button" parent="."]
+offset_left = 434.0
+offset_top = 81.0
+offset_right = 575.0
+offset_bottom = 112.0
+text = "Encender y Lavar"
+
+[node name="Llenar Detergente" type="Button" parent="."]
+offset_left = 58.0
+offset_top = 85.0
+offset_right = 207.0
+offset_bottom = 116.0
+text = "Llenar Detergente"
+
+[node name="Minimo" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
+
+[node name="Maximo" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[node name="Reiniciar Llenado" type="Button" parent="."]
+offset_left = 63.0
+offset_top = 128.0
+offset_right = 204.0
+offset_bottom = 159.0
+disabled = true
+text = "Reiniciar Llenado"
+
+[connection signal="timeout" from="Lavar" to="." method="_on_lavar_timeout"]
+[connection signal="pressed" from="Encender" to="." method="_on_encender_pressed"]
+[connection signal="button_down" from="Llenar Detergente" to="." method="_on_llenar_detergente_button_down"]
+[connection signal="button_up" from="Llenar Detergente" to="." method="_on_llenar_detergente_button_up"]
+[connection signal="timeout" from="Minimo" to="." method="_on_minimo_timeout"]
+[connection signal="timeout" from="Maximo" to="." method="_on_maximo_timeout"]
+[connection signal="pressed" from="Reiniciar Llenado" to="." method="_on_reiniciar_llenado_pressed"]
