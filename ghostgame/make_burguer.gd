@@ -66,3 +66,10 @@ func _on_mandar_pressed() -> void:
 			break # Replace with function body.
 	if compl == 1:
 		print("lista completada")
+
+func _on_reset_pressed() -> void:
+	ordenar = []
+	_tomButton.disabled = false
+	_lechuButton.disabled = false
+	_quesButton.disabled = false
+	_hambButton.disabled = false

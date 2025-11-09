@@ -2,11 +2,12 @@
 
 [ext_resource type="Script" uid="uid://fuds11c1uutg" path="res://make_burguer.gd" id="1_ji5cu"]
 
-[node name="makeBurguer" type="Node2D" node_paths=PackedStringArray("_excededTimer", "_completedTimer", "_xButton", "_hambButton", "_lechuButton", "_tomButton", "_quesButton")]
+[node name="makeBurguer" type="Node2D" node_paths=PackedStringArray("_excededTimer", "_completedTimer", "_xButton", "_cookButton", "_hambButton", "_lechuButton", "_tomButton", "_quesButton")]
 script = ExtResource("1_ji5cu")
 _excededTimer = NodePath("QuemadoTimer")
 _completedTimer = NodePath("CocidoTimer")
 _xButton = NodePath("XButton")
+_cookButton = NodePath("CookButton")
 _hambButton = NodePath("Hamburguesa")
 _lechuButton = NodePath("Lechuga")
 _tomButton = NodePath("Tomate")
@@ -69,6 +70,10 @@ offset_right = 586.0
 offset_bottom = 65.0
 text = "Mandar"
 
+[node name="Reset" type="Button" parent="."]
+offset_right = 8.0
+offset_bottom = 8.0
+
 [connection signal="timeout" from="QuemadoTimer" to="." method="_on_quemado_timer_timeout"]
 [connection signal="timeout" from="CocidoTimer" to="." method="_on_cocido_timer_timeout"]
 [connection signal="toggled" from="CookButton" to="." method="_on_burguer_button_toggled"]
@@ -78,3 +83,4 @@ text = "Mandar"
 [connection signal="pressed" from="Hamburguesa" to="." method="_on_hamburguesa_pressed"]
 [connection signal="pressed" from="Tomate" to="." method="_on_tomate_pressed"]
 [connection signal="pressed" from="Mandar" to="." method="_on_mandar_pressed"]
+[connection signal="pressed" from="Reset" to="." method="_on_reset_pressed"]

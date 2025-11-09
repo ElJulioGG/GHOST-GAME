@@ -10,7 +10,7 @@ _xButton = NodePath("XButton")
 _heladoButton = NodePath("HeladoButton")
 
 [node name="ExcededTimer" type="Timer" parent="."]
-wait_time = 10.0
+wait_time = 8.0
 one_shot = true
 
 [node name="XButton" type="Button" parent="."]
