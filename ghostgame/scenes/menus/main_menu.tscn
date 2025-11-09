@@ -194,8 +194,13 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("6_1hnlc")
 text = "Instrucciones:
-WASD
-Espacio
+
+Movimiento:
+Flachas direcionales
+
+Interacciones:
+Boton \"E\"
+
 "
 horizontal_alignment = 1
 
@@ -215,6 +220,7 @@ time = 0.2
 metadata/_custom_type_script = "uid://yji5fyd27trl"
 
 [node name="PanelCreditos" type="Panel" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -245,20 +251,24 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -47.0
+offset_left = -94.5
 offset_top = -88.0
-offset_right = 47.0
+offset_right = 95.87
 offset_bottom = 117.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("6_1hnlc")
+theme_override_font_sizes/font_size = 12
 text = "Integrantes:
-Julio 
-Rodrigo
-Tark
-Pietro
-MAca
-Pinwino
+-Julio Cesar Guillermo 
+Meza Alfaro
+-Tarik Gustavo Morales
+Oliveros
+-Rodrigo Alonso Ramirez
+Cesti
+-Pietro Collantes Morri
+-Maria Maca B)
+-Adrián Oziel Alcalá Huaman
 "
 horizontal_alignment = 1
 
