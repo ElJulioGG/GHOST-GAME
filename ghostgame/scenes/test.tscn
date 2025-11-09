@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://c2g4xu7oyo5ys"]
+
+[ext_resource type="PackedScene" uid="uid://bgf14ja037s15" path="res://scenes/player/player_scene.tscn" id="1_errlg"]
+[ext_resource type="PackedScene" uid="uid://b576waw27jt0e" path="res://scenes/interactables/burgertory/fryer.tscn" id="2_bl13t"]
+[ext_resource type="PackedScene" uid="uid://b0cviker8absv" path="res://scenes/interactables/reception_desk/reception_desk.tscn" id="3_iyx0m"]
+
+[node name="Test" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_errlg")]
+position = Vector2(272, 272)
+
+[node name="Fryer" parent="." instance=ExtResource("2_bl13t")]
+position = Vector2(186, 269)
+
+[node name="ReceptionDesk" parent="." instance=ExtResource("3_iyx0m")]
+position = Vector2(276, 175)

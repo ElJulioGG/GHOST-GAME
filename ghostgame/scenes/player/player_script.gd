@@ -12,6 +12,7 @@ extends CharacterBody2D
 const _gridSize : float = 32
 var _movementTween : Tween
 var _currentInteractable : Interactable = null
+var _currentPickup : Pickup = null
 
 ################################ Visual ################################
 
@@ -34,8 +35,29 @@ func _clear_interactable(obj : Interactable) -> void:
 
 func _check_interaction() -> void:
 	if !_movementTween or !_movementTween.is_running():
-		if Input.is_action_just_pressed("interaction") && _currentInteractable != null && _currentInteractable._canInteract == true:
+		if Input.is_action_just_pressed("interaction") && _currentInteractable != null:
 			_currentInteractable._interaction()
+
+################################ Pickups ################################
+
+func _give_pickup_to_player(pkPath : String) -> bool:
+	if _currentPickup != null:
+		return false
+	
+	_currentPickup = load(pkPath).instantiate()
+	
+	self.add_child(_currentPickup)
+	
+	return true
+
+func _recieve_pickup_from_player() -> Pickup:
+	if _currentPickup == null:
+		return null
+	
+	self.remove_child(_currentPickup)
+	var pickupAux = _currentPickup
+	_currentPickup = null
+	return pickupAux
 
 ################################ Movement functions ################################
 
