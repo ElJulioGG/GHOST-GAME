@@ -49,11 +49,12 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Fryer" type="Area2D" node_paths=PackedStringArray("_fryTimer", "_burnTimer", "_hitbox", "_animSprite")]
+[node name="Fryer" type="Area2D" node_paths=PackedStringArray("_fryTimer", "_burnTimer", "_ASP", "_hitbox", "_animSprite")]
 collision_layer = 2
 script = ExtResource("1_81ain")
 _fryTimer = NodePath("FryerTimer")
 _burnTimer = NodePath("BurntTimer")
+_ASP = NodePath("AudioStreamPlayer")
 _hitbox = NodePath("InteractableHitbox")
 _animSprite = NodePath("InteractableAnimsprite")
 metadata/_edit_horizontal_guides_ = [27.0]

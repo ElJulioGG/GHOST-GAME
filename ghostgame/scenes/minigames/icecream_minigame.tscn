@@ -1,16 +1,22 @@
-[gd_scene load_steps=3 format=3 uid="uid://dmdr3rcdoig81"]
+[gd_scene load_steps=8 format=3 uid="uid://dmdr3rcdoig81"]
 
 [ext_resource type="Script" uid="uid://bmpxy73qbhunb" path="res://scenes/minigames/icecream_minigame_script.gd" id="1_dq53i"]
+[ext_resource type="Texture2D" uid="uid://ddq1k8mybrtqy" path="res://Assets/Backgrounds/helado.jpg" id="2_lv105"]
+[ext_resource type="Texture2D" uid="uid://dqtf27jdxxae" path="res://Assets/n.png" id="4_eo1rn"]
+[ext_resource type="Texture2D" uid="uid://bwni80s1q6yen" path="res://Assets/HUD/flecha.png" id="5_s82j1"]
+[ext_resource type="Texture2D" uid="uid://cdmld5kkd3y6x" path="res://Assets/a.png" id="5_t75q5"]
+[ext_resource type="Texture2D" uid="uid://dfi8hjl38q7qb" path="res://Assets/HUD/calaverita.png" id="6_eo1rn"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gnnud"]
 bg_color = Color(0, 0, 0, 1)
 
-[node name="IceCreamMinigame" type="Node2D" node_paths=PackedStringArray("_excededTimer", "_completedTimer", "_closeButton", "_fillButton")]
+[node name="IceCreamMinigame" type="Node2D" node_paths=PackedStringArray("_excededTimer", "_completedTimer", "_closeButton", "_fillButton", "_pbar")]
 script = ExtResource("1_dq53i")
 _excededTimer = NodePath("ExcededTimer")
 _completedTimer = NodePath("CompletedTimer")
 _closeButton = NodePath("CanvasLayer/Panel/Panel/CloseButton")
 _fillButton = NodePath("CanvasLayer/Panel/Panel/FillButton")
+_pbar = NodePath("CanvasLayer/Panel/Panel/Node2D/TextureProgressBar")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -28,21 +34,53 @@ offset_right = 526.0
 offset_bottom = 316.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_gnnud")
 
+[node name="Background" type="Sprite2D" parent="CanvasLayer/Panel/Panel"]
+position = Vector2(207.5, 128)
+scale = Vector2(0.997596, 1)
+texture = ExtResource("2_lv105")
+
 [node name="CloseButton" type="Button" parent="CanvasLayer/Panel/Panel"]
 layout_mode = 0
-offset_left = 85.0
-offset_top = 68.0
-offset_right = 116.0
-offset_bottom = 99.0
+offset_left = 14.0
+offset_top = 13.0
+offset_right = 45.0
+offset_bottom = 44.0
 text = "X"
 
 [node name="FillButton" type="Button" parent="CanvasLayer/Panel/Panel"]
 layout_mode = 0
-offset_left = 103.0
-offset_top = 20.0
-offset_right = 166.0
-offset_bottom = 51.0
+offset_left = 235.0
+offset_top = 222.0
+offset_right = 298.0
+offset_bottom = 253.0
 text = "Helado"
+
+[node name="Node2D" type="Node2D" parent="CanvasLayer/Panel/Panel"]
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer/Panel/Panel/Node2D"]
+z_index = 4096
+offset_left = 316.0
+offset_top = 125.0
+offset_right = 400.0
+offset_bottom = 133.0
+rotation = 1.5708
+scale = Vector2(0.5, 0.5)
+max_value = 200.0
+step = 0.01
+texture_under = ExtResource("4_eo1rn")
+texture_progress = ExtResource("5_t75q5")
+
+[node name="Flecha" type="Sprite2D" parent="CanvasLayer/Panel/Panel"]
+texture_filter = 1
+position = Vector2(321, 153)
+scale = Vector2(0.375001, 0.3125)
+texture = ExtResource("5_s82j1")
+
+[node name="Calaverita" type="Sprite2D" parent="CanvasLayer/Panel/Panel"]
+texture_filter = 1
+position = Vector2(321, 167)
+scale = Vector2(0.375, 0.390625)
+texture = ExtResource("6_eo1rn")
 
 [node name="ExcededTimer" type="Timer" parent="."]
 wait_time = 0.4

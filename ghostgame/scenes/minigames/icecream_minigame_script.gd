@@ -5,15 +5,20 @@ extends Node2D
 @export var _completedTimer: Timer
 @export var _closeButton: Button
 @export var _fillButton: Button
+@export var _pbar : TextureProgressBar
+
+var _filling : bool = false
 var _state : int = 0
 
 var _interactableParent : Interactable = null
 
 func _on_fill_button_button_down() -> void:
 	_completedTimer.start()
+	_filling = true
 
 func _on_fill_button_button_up() -> void:
 	_check_status()
+	_filling = false
 
 func _on_completed_timer_timeout() -> void:
 	_state = 1
@@ -42,3 +47,7 @@ func _on_close_button_pressed() -> void:
 	_excededTimer.stop()
 	_fillButton.disabled = true
 	_interactableParent._icecream_minigame_over(0)
+
+func _physics_process(delta: float) -> void:
+	if _filling:
+		_pbar.value += 0.7

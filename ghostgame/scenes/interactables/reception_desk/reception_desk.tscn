@@ -1,24 +1,27 @@
-[gd_scene load_steps=6 format=3 uid="uid://b0cviker8absv"]
+[gd_scene load_steps=7 format=3 uid="uid://b0cviker8absv"]
 
 [ext_resource type="Script" uid="uid://166dyqfudn56" path="res://scenes/interactables/reception_desk/reception_desk_extension.gd" id="1_26uhr"]
 [ext_resource type="Texture2D" uid="uid://c2vrxx51010m6" path="res://icon.svg" id="2_ahhna"]
 [ext_resource type="AudioStream" uid="uid://drv1cwpbl3idh" path="res://Assets/sound/orden_correcta.ogg" id="3_5oruf"]
+[ext_resource type="Texture2D" uid="uid://p347gfk1w34i" path="res://Assets/Order/vacio.png" id="3_41khk"]
 [ext_resource type="AudioStream" uid="uid://dwwl3pvvfov1q" path="res://Assets/sound/orden_mala_2.ogg" id="4_41khk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i8ya4"]
 size = Vector2(30, 30)
 
-[node name="ReceptionDesk" type="Area2D" node_paths=PackedStringArray("_clientSprite", "_orderSprite", "_orderTimer", "_idleTimer", "_hitbox", "_animSprite")]
+[node name="ReceptionDesk" type="Area2D" node_paths=PackedStringArray("_clientSprite", "_orderSprite", "_globoSprite", "_orderTimer", "_idleTimer", "_ASP1", "_ASP2", "_hitbox")]
 collision_layer = 2
 script = ExtResource("1_26uhr")
 _clientSprite = NodePath("ClientSprite")
 _orderSprite = NodePath("OrderSprite")
+_globoSprite = NodePath("GloboSprite")
 _orderTimer = NodePath("OrderTimer")
 _idleTimer = NodePath("IdleTimer")
-_possibleOrders = Array[String](["FRIES", "ICECREAM", "BURGER"])
-_orderWeights = Array[float]([50.0, 30.0, 20.0])
+_possibleOrders = Array[String](["FRIES", "ICECREAM"])
+_orderWeights = Array[float]([60.0, 40.0])
+_ASP1 = NodePath("Good")
+_ASP2 = NodePath("Bad")
 _hitbox = NodePath("InteractableHitbox")
-_animSprite = NodePath("")
 
 [node name="InteractableHitbox" type="CollisionShape2D" parent="."]
 position = Vector2(0, 32)
@@ -35,14 +38,20 @@ wait_time = 5.0
 one_shot = true
 
 [node name="ClientSprite" type="Sprite2D" parent="."]
-position = Vector2(0, -85)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_ahhna")
+position = Vector2(0, -32)
 
 [node name="OrderSprite" type="Sprite2D" parent="."]
-position = Vector2(60, -80)
-scale = Vector2(0.25, 0.25)
+z_index = 2
+texture_filter = 1
+position = Vector2(3, -66)
 texture = ExtResource("2_ahhna")
+
+[node name="GloboSprite" type="Sprite2D" parent="."]
+z_index = 1
+texture_filter = 1
+position = Vector2(7, -56)
+scale = Vector2(1.3, 1.3)
+texture = ExtResource("3_41khk")
 
 [node name="Good" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_5oruf")

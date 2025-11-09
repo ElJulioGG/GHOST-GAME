@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://vhwknpbt6o5u"]
+[gd_scene load_steps=17 format=3 uid="uid://vhwknpbt6o5u"]
 
 [ext_resource type="PackedScene" uid="uid://bgf14ja037s15" path="res://scenes/player/player_scene.tscn" id="1_errlg"]
 [ext_resource type="Script" uid="uid://cagyh4socn5ej" path="res://scenes/level_script.gd" id="1_jcd4p"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://ddigs7cuc7snn" path="res://scenes/interactables/burgertory/icecream_machine.tscn" id="6_lpvoh"]
 [ext_resource type="Texture2D" uid="uid://cdprtjxct5ini" path="res://Assets/HUD/vial/pixil-frame-0.png" id="9_uacia"]
 [ext_resource type="Texture2D" uid="uid://dqtf27jdxxae" path="res://Assets/n.png" id="10_ajshl"]
+[ext_resource type="AudioStream" uid="uid://ma7btktsj6t1" path="res://Assets/sound/game-jam-upc-2025-gameplay.ogg" id="11_ajshl"]
 [ext_resource type="Texture2D" uid="uid://cdmld5kkd3y6x" path="res://Assets/a.png" id="11_ghpyy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j5jx5"]
@@ -26,9 +27,11 @@ size = Vector2(32, 1000)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yk7ts"]
 size = Vector2(10, 1000)
 
-[node name="Test" type="Node2D" node_paths=PackedStringArray("_pbar")]
+[node name="Test" type="Node2D" node_paths=PackedStringArray("_pbar", "_timeLVLtext", "_timer")]
 script = ExtResource("1_jcd4p")
 _pbar = NodePath("TextureProgressBar")
+_timeLVLtext = NodePath("CanvasLayer/PanelContainer/Label")
+_timer = NodePath("Timer")
 metadata/_edit_vertical_guides_ = [48.0, 132.0]
 
 [node name="Background" type="Sprite2D" parent="."]
@@ -69,29 +72,56 @@ position = Vector2(272, 248)
 [node name="Orders" type="Node2D" parent="."]
 
 [node name="ReceptionDesk" parent="Orders" instance=ExtResource("3_iyx0m")]
-position = Vector2(144, 120)
+position = Vector2(144, 119)
+
+[node name="ReceptionDesk5" parent="Orders" instance=ExtResource("3_iyx0m")]
+position = Vector2(433, 119)
+
+[node name="ReceptionDesk6" parent="Orders" instance=ExtResource("3_iyx0m")]
+position = Vector2(465, 119)
+
+[node name="ReceptionDesk7" parent="Orders" instance=ExtResource("3_iyx0m")]
+position = Vector2(496, 120)
+
+[node name="ReceptionDesk8" parent="Orders" instance=ExtResource("3_iyx0m")]
+position = Vector2(527, 119)
 
 [node name="ReceptionDesk2" parent="Orders" instance=ExtResource("3_iyx0m")]
-position = Vector2(112, 120)
+position = Vector2(112, 118)
 
 [node name="ReceptionDesk3" parent="Orders" instance=ExtResource("3_iyx0m")]
-position = Vector2(176, 120)
+position = Vector2(207, 121)
 
 [node name="ReceptionDesk4" parent="Orders" instance=ExtResource("3_iyx0m")]
-position = Vector2(208, 120)
-_orderWeights = Array[float]([100.0, 0.0, 0.0])
+position = Vector2(176, 120)
 
 [node name="Machines" type="Node2D" parent="."]
 
 [node name="TrashCan" parent="Machines" instance=ExtResource("4_74lek")]
-position = Vector2(304, 152)
+position = Vector2(302, 152)
 rotation = 1.5708
+
+[node name="TrashCan2" parent="Machines" instance=ExtResource("4_74lek")]
+position = Vector2(340, 151)
 
 [node name="IceCreamMachine" parent="Machines" instance=ExtResource("6_lpvoh")]
 position = Vector2(144, 280)
 
+[node name="IceCreamMachine2" parent="Machines" instance=ExtResource("6_lpvoh")]
+position = Vector2(208, 279)
+
+[node name="IceCreamMachine3" parent="Machines" instance=ExtResource("6_lpvoh")]
+position = Vector2(464, 280)
+
+[node name="IceCreamMachine4" parent="Machines" instance=ExtResource("6_lpvoh")]
+position = Vector2(400, 279)
+
 [node name="Fryer" parent="Machines" instance=ExtResource("2_bl13t")]
 position = Vector2(71, 232)
+
+[node name="Fryer2" parent="Machines" instance=ExtResource("2_bl13t")]
+position = Vector2(569, 231)
+rotation = 3.14159
 
 [node name="ProgressBar" type="Sprite2D" parent="."]
 z_index = 1000
@@ -112,3 +142,26 @@ step = 0.01
 value = 200.0
 texture_under = ExtResource("10_ajshl")
 texture_progress = ExtResource("11_ghpyy")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer"]
+offset_left = 256.0
+offset_top = 92.0
+offset_right = 379.0
+offset_bottom = 132.0
+
+[node name="Label" type="Label" parent="CanvasLayer/PanelContainer"]
+layout_mode = 2
+text = "Time left: 60"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 240.0
+one_shot = true
+autostart = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_ajshl")
+volume_db = -11.243
