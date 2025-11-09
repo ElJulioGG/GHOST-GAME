@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://mv4jvucavvcl"]
+[gd_scene load_steps=18 format=3 uid="uid://mv4jvucavvcl"]
 
 [ext_resource type="Script" uid="uid://dwf0kpkp3apbb" path="res://scenes/menus/main_menu.gd" id="1_ovrgc"]
 [ext_resource type="Script" uid="uid://yji5fyd27trl" path="res://scripts_j/animation_component.gd" id="2_2o76q"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://exxeld8j38u4" path="res://Assets/Sprites/UI/wood_panel.png" id="4_6bivr"]
 [ext_resource type="Texture2D" uid="uid://dp4y47kd1bcgq" path="res://Assets/Sprites/UI/menu-3.png" id="4_8r73w"]
 [ext_resource type="FontFile" uid="uid://depubakwitka0" path="res://Assets/Fonts/DoubleBass-Bold-trial.ttf" id="6_1hnlc"]
+[ext_resource type="Texture2D" uid="uid://oxw0cmpr4cwi" path="res://Assets/Backgrounds/creditos.jpeg" id="9_50h1w"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vue75"]
 texture = ExtResource("2_ng0o5")
@@ -25,6 +26,9 @@ texture = ExtResource("4_6bivr")
 region_rect = Rect2(0, 0, 48, 48)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2o76q"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_euy4r"]
+texture = ExtResource("9_50h1w")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6bivr"]
 texture = ExtResource("4_6bivr")
@@ -156,6 +160,7 @@ time = 0.2
 metadata/_custom_type_script = "uid://yji5fyd27trl"
 
 [node name="PanelInstrucciones" type="Panel" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -220,7 +225,6 @@ time = 0.2
 metadata/_custom_type_script = "uid://yji5fyd27trl"
 
 [node name="PanelCreditos" type="Panel" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -229,7 +233,17 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_2o76q")
 
+[node name="Panel2" type="Panel" parent="PanelCreditos"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_euy4r")
+
 [node name="Panel" type="Panel" parent="PanelCreditos"]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -260,6 +274,7 @@ grow_vertical = 2
 theme_override_fonts/font = ExtResource("6_1hnlc")
 theme_override_font_sizes/font_size = 12
 text = "Integrantes:
+
 -Julio Cesar Guillermo 
 Meza Alfaro
 -Tarik Gustavo Morales
@@ -274,10 +289,10 @@ horizontal_alignment = 1
 
 [node name="ButtonClose" type="Button" parent="PanelCreditos"]
 layout_mode = 0
-offset_left = 220.0
-offset_top = 112.0
-offset_right = 240.0
-offset_bottom = 132.0
+offset_left = 12.0
+offset_top = 9.0
+offset_right = 32.0
+offset_bottom = 29.0
 theme_override_font_sizes/font_size = 8
 text = "X"
 
