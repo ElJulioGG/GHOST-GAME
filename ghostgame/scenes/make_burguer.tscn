@@ -14,11 +14,11 @@ _tomButton = NodePath("Tomate")
 _quesButton = NodePath("Queso")
 
 [node name="QuemadoTimer" type="Timer" parent="."]
-wait_time = 15.0
+wait_time = 18.0
 one_shot = true
 
 [node name="CocidoTimer" type="Timer" parent="."]
-wait_time = 10.0
+wait_time = 12.0
 
 [node name="CookButton" type="Button" parent="."]
 offset_left = 255.0

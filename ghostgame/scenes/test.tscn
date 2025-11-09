@@ -1,7 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://c2g4xu7oyo5ys"]
+[gd_scene load_steps=4 format=3 uid="uid://vhwknpbt6o5u"]
 
 [ext_resource type="PackedScene" uid="uid://bgf14ja037s15" path="res://scenes/player/player_scene.tscn" id="1_errlg"]
-[ext_resource type="PackedScene" uid="uid://b576waw27jt0e" path="res://scenes/interactables/burgertory/fryer.tscn" id="2_bl13t"]
+[ext_resource type="PackedScene" uid="uid://dqaae122iqax5" path="res://scenes/interactables/burgertory/fryer.tscn" id="2_bl13t"]
 [ext_resource type="PackedScene" uid="uid://b0cviker8absv" path="res://scenes/interactables/reception_desk/reception_desk.tscn" id="3_iyx0m"]
 
 [node name="Test" type="Node2D"]

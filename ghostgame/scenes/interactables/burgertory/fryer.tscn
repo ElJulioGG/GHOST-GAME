@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b576waw27jt0e"]
+[gd_scene load_steps=9 format=3 uid="uid://dqaae122iqax5"]
 
 [ext_resource type="Script" uid="uid://ce533tf4rb27o" path="res://scenes/interactables/burgertory/fryer_extension.gd" id="1_81ain"]
 [ext_resource type="Texture2D" uid="uid://cv2jjvuxhc37s" path="res://Assets/burgatorio-borrador/Ani CoKcion/fotograma0000.png" id="2_81ain"]
