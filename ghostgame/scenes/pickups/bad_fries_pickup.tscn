@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://8fge1uksvxdg" path="res://Assets/burgatorio-borrador/papasfritas (Malas).png" id="1_q5rc6"]
 
 [node name="BadFriesPickup" type="Sprite2D"]
+texture_filter = 1
 texture = ExtResource("1_q5rc6")
 script = ExtResource("1_iscc1")
 _pickupName = "SHIT"

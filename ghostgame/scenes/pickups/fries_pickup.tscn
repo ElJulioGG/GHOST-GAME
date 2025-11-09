@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cmsyxvyshqt0v" path="res://Assets/burgatorio-borrador/papasfritas buenas.png" id="1_bhd73"]
 
 [node name="FriesPickup" type="Sprite2D"]
+texture_filter = 1
 texture = ExtResource("1_bhd73")
 script = ExtResource("1_08vse")
 _pickupName = "FRIES"
