@@ -1,36 +1,81 @@
-[gd_scene load_steps=5 format=3 uid="uid://dqaae122iqax5"]
+[gd_scene load_steps=9 format=3 uid="uid://b576waw27jt0e"]
 
-[ext_resource type="Script" uid="uid://ma5jlxqcsbyq" path="res://scenes/interactables/burgertory/fryer_extension.gd" id="1_81ain"]
-[ext_resource type="Texture2D" uid="uid://cfb3ovepuxbpj" path="res://icon.svg" id="2_nc7wv"]
+[ext_resource type="Script" uid="uid://ce533tf4rb27o" path="res://scenes/interactables/burgertory/fryer_extension.gd" id="1_81ain"]
+[ext_resource type="Texture2D" uid="uid://cv2jjvuxhc37s" path="res://Assets/burgatorio-borrador/Ani CoKcion/fotograma0000.png" id="2_81ain"]
+[ext_resource type="Texture2D" uid="uid://c2xthrjr0s3bp" path="res://Assets/burgatorio-borrador/Ani CoKcion/fotograma0004.png" id="2_lgn51"]
+[ext_resource type="Texture2D" uid="uid://crvv7itvsogrb" path="res://Assets/burgatorio-borrador/Ani CoKcion/fotograma0001.png" id="3_ejhbg"]
+[ext_resource type="Texture2D" uid="uid://cmk0egpm0gvay" path="res://Assets/burgatorio-borrador/Ani CoKcion/fotograma0002.png" id="4_hathm"]
+[ext_resource type="Texture2D" uid="uid://cde5hhi7qvjb2" path="res://Assets/burgatorio-borrador/Ani CoKcion/fotograma0003.png" id="5_5mn2y"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7oi3y"]
-size = Vector2(30, 30)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i8ya4"]
+size = Vector2(30, 60)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_ilea7"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_i8ya4"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_nc7wv")
+"texture": ExtResource("2_lgn51")
 }],
 "loop": true,
-"name": &"default",
+"name": &"badFries",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_ejhbg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_hathm")
+}],
+"loop": true,
+"name": &"frying",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_5mn2y")
+}],
+"loop": true,
+"name": &"goodFries",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_81ain")
+}],
+"loop": true,
+"name": &"idle",
 "speed": 5.0
 }]
 
-[node name="Fryer" type="Area2D" node_paths=PackedStringArray("fryTimer")]
+[node name="Fryer" type="Area2D" node_paths=PackedStringArray("_fryTimer", "_burnTimer", "_hitbox", "_animSprite")]
+collision_layer = 2
 script = ExtResource("1_81ain")
-fryTimer = NodePath("FryerTimer")
-metadata/_custom_type_script = "uid://cwqu6o3rfcr3n"
+_fryTimer = NodePath("FryerTimer")
+_burnTimer = NodePath("BurntTimer")
+_hitbox = NodePath("InteractableHitbox")
+_animSprite = NodePath("InteractableAnimsprite")
+metadata/_edit_horizontal_guides_ = [27.0]
 
-[node name="FyerHitbox" type="CollisionShape2D" parent="."]
-position = Vector2(0, -32)
-shape = SubResource("RectangleShape2D_7oi3y")
+[node name="InteractableHitbox" type="CollisionShape2D" parent="."]
+position = Vector2(41, 0)
+shape = SubResource("RectangleShape2D_i8ya4")
+debug_color = Color(0.659922, 0.514714, 0, 0.42)
 
-[node name="FryerAnimSprite" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.25, 0.25)
-sprite_frames = SubResource("SpriteFrames_ilea7")
+[node name="InteractableAnimsprite" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_i8ya4")
+animation = &"frying"
 
 [node name="FryerTimer" type="Timer" parent="."]
-process_callback = 0
-wait_time = 3.0
+wait_time = 4.0
 one_shot = true
+
+[node name="BurntTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="timeout" from="FryerTimer" to="." method="_on_fryer_timer_timeout"]
+[connection signal="timeout" from="BurntTimer" to="." method="_on_burnt_timer_timeout"]

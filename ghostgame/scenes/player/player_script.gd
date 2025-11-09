@@ -11,9 +11,8 @@ extends CharacterBody2D
 
 const _gridSize : float = 32
 var _movementTween : Tween
-
-var _canInteract : bool = true
 var _currentInteractable : Interactable = null
+var _currentPickup : Pickup = null
 
 ################################ Visual ################################
 
@@ -36,8 +35,29 @@ func _clear_interactable(obj : Interactable) -> void:
 
 func _check_interaction() -> void:
 	if !_movementTween or !_movementTween.is_running():
-		if Input.is_action_just_pressed("interaction") && _canInteract && _currentInteractable != null:
+		if Input.is_action_just_pressed("interaction") && _currentInteractable != null:
 			_currentInteractable._interaction()
+
+################################ Pickups ################################
+
+func _give_pickup_to_player(pkPath : String) -> bool:
+	if _currentPickup != null:
+		return false
+	
+	_currentPickup = load(pkPath).instantiate()
+	
+	self.add_child(_currentPickup)
+	
+	return true
+
+func _recieve_pickup_from_player() -> Pickup:
+	if _currentPickup == null:
+		return null
+	
+	self.remove_child(_currentPickup)
+	var pickupAux = _currentPickup
+	_currentPickup = null
+	return pickupAux
 
 ################################ Movement functions ################################
 
@@ -60,7 +80,12 @@ func _move(dir : Vector2) -> void:
 	
 	_movementTween = create_tween()
 	_movementTween.set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
-	_movementTween.tween_property(self,"global_position",self.global_position + dir, 0.2).set_trans(Tween.TRANS_SINE)
+	_movementTween.tween_property(self,"global_position",self.global_position + dir, 0.13).set_trans(Tween.TRANS_SINE)
+
+##################################### Ready #####################################
+
+func _ready() -> void:
+	globalScript._currentPlayer = self
 
 ################################# Physics Process #################################
 

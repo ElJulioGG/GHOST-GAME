@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://ij1xfnw664pf"]
+
+[ext_resource type="Script" uid="uid://dj0o4cr5x0je4" path="res://scenes/pickups/pickup_script.gd" id="1_iscc1"]
+[ext_resource type="Texture2D" uid="uid://8fge1uksvxdg" path="res://Assets/burgatorio-borrador/papasfritas (Malas).png" id="1_q5rc6"]
+
+[node name="BadFriesPickup" type="Sprite2D"]
+texture = ExtResource("1_q5rc6")
+script = ExtResource("1_iscc1")
+_pickupName = "SHIT"

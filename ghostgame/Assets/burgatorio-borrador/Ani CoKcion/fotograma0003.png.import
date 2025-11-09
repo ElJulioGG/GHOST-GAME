@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://deverfkt88ag6"
-path="res://.godot/imported/Hamburguesa 3 cruda off.png-405e06638983ee32d892681133da5cc8.ctex"
+uid="uid://cde5hhi7qvjb2"
+path="res://.godot/imported/fotograma0003.png-0f99eed158cd33869f7adebe8bf17dc6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/burgatorio-borrador/Hamburguesa 3 cruda off.png"
-dest_files=["res://.godot/imported/Hamburguesa 3 cruda off.png-405e06638983ee32d892681133da5cc8.ctex"]
+source_file="res://Assets/burgatorio-borrador/Ani CoKcion/fotograma0003.png"
+dest_files=["res://.godot/imported/fotograma0003.png-0f99eed158cd33869f7adebe8bf17dc6.ctex"]
 
 [params]
 

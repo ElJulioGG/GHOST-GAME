@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://cwqu6o3rfcr3n" path="res://scenes/interactables/interactable_template.gd" id="1_ag6kq"]
 [ext_resource type="Texture2D" uid="uid://c2vrxx51010m6" path="res://icon.svg" id="1_i8ya4"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_w7q2n"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i8ya4"]
 size = Vector2(30, 30)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_i8ya4"]
@@ -18,12 +18,13 @@ animations = [{
 }]
 
 [node name="PrimitiveInteractable" type="Area2D" node_paths=PackedStringArray("_hitbox")]
+collision_layer = 2
 script = ExtResource("1_ag6kq")
 _hitbox = NodePath("InteractableHitbox")
 
 [node name="InteractableHitbox" type="CollisionShape2D" parent="."]
 position = Vector2(0, -32)
-shape = SubResource("RectangleShape2D_w7q2n")
+shape = SubResource("RectangleShape2D_i8ya4")
 
 [node name="InteractableAnimsprite" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.25, 0.25)

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://deverfkt88ag6"
-path="res://.godot/imported/Hamburguesa 3 cruda off.png-405e06638983ee32d892681133da5cc8.ctex"
+uid="uid://cmsyxvyshqt0v"
+path="res://.godot/imported/papasfritas buenas.png-0a0fd4d1cb07d43388a9ba9c32d04e57.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/burgatorio-borrador/Hamburguesa 3 cruda off.png"
-dest_files=["res://.godot/imported/Hamburguesa 3 cruda off.png-405e06638983ee32d892681133da5cc8.ctex"]
+source_file="res://Assets/burgatorio-borrador/papasfritas buenas.png"
+dest_files=["res://.godot/imported/papasfritas buenas.png-0a0fd4d1cb07d43388a9ba9c32d04e57.ctex"]
 
 [params]
 
