@@ -1,0 +1,80 @@
+[gd_scene load_steps=2 format=3 uid="uid://smhr0ykk4md0"]
+
+[ext_resource type="Script" uid="uid://fuds11c1uutg" path="res://make_burguer.gd" id="1_ji5cu"]
+
+[node name="makeBurguer" type="Node2D" node_paths=PackedStringArray("_excededTimer", "_completedTimer", "_xButton", "_hambButton", "_lechuButton", "_tomButton", "_quesButton")]
+script = ExtResource("1_ji5cu")
+_excededTimer = NodePath("QuemadoTimer")
+_completedTimer = NodePath("CocidoTimer")
+_xButton = NodePath("XButton")
+_hambButton = NodePath("Hamburguesa")
+_lechuButton = NodePath("Lechuga")
+_tomButton = NodePath("Tomate")
+_quesButton = NodePath("Queso")
+
+[node name="QuemadoTimer" type="Timer" parent="."]
+wait_time = 15.0
+one_shot = true
+
+[node name="CocidoTimer" type="Timer" parent="."]
+wait_time = 10.0
+
+[node name="CookButton" type="Button" parent="."]
+offset_left = 255.0
+offset_top = 110.0
+offset_right = 315.0
+offset_bottom = 141.0
+toggle_mode = true
+text = "Cocina"
+
+[node name="XButton" type="Button" parent="."]
+offset_left = 35.0
+offset_top = 50.0
+offset_right = 53.0
+offset_bottom = 81.0
+text = "X"
+
+[node name="Lechuga" type="Button" parent="."]
+offset_left = 213.0
+offset_top = 263.0
+offset_right = 289.0
+offset_bottom = 294.0
+text = "Lechuga"
+
+[node name="Queso" type="Button" parent="."]
+offset_left = 368.0
+offset_top = 261.0
+offset_right = 432.0
+offset_bottom = 292.0
+text = "Queso"
+
+[node name="Hamburguesa" type="Button" parent="."]
+offset_left = 38.0
+offset_top = 267.0
+offset_right = 105.0
+offset_bottom = 298.0
+text = "Hamburguesa"
+
+[node name="Tomate" type="Button" parent="."]
+offset_left = 485.0
+offset_top = 260.0
+offset_right = 602.0
+offset_bottom = 291.0
+text = "Tomate"
+
+[node name="Mandar" type="Button" parent="."]
+offset_left = 517.0
+offset_top = 34.0
+offset_right = 586.0
+offset_bottom = 65.0
+text = "Mandar"
+
+[connection signal="timeout" from="QuemadoTimer" to="." method="_on_quemado_timer_timeout"]
+[connection signal="timeout" from="CocidoTimer" to="." method="_on_cocido_timer_timeout"]
+[connection signal="toggled" from="CookButton" to="." method="_on_burguer_button_toggled"]
+[connection signal="pressed" from="XButton" to="." method="_on_x_button_pressed"]
+[connection signal="pressed" from="Lechuga" to="." method="_on_lechuga_pressed"]
+[connection signal="pressed" from="Queso" to="." method="_on_queso_pressed"]
+[connection signal="pressed" from="Hamburguesa" to="." method="_on_hamburguesa_pressed"]
+[connection signal="pressed" from="Tomate" to="." method="_on_tomate_pressed"]
+[connection signal="pressed" from="Mandar" to="." method="_on_mandar_pressed"]

@@ -1,0 +1,38 @@
+[gd_scene load_steps=2 format=3 uid="uid://dmdr3rcdoig81"]
+
+[ext_resource type="Script" uid="uid://bmpxy73qbhunb" path="res://primitive_minigame.gd" id="1_gnnud"]
+
+[node name="PrimitiveMinigame" type="Node2D" node_paths=PackedStringArray("_excededTimer", "_completedTimer", "_xButton", "_heladoButton")]
+script = ExtResource("1_gnnud")
+_excededTimer = NodePath("ExcededTimer")
+_completedTimer = NodePath("CompletedTimer")
+_xButton = NodePath("XButton")
+_heladoButton = NodePath("HeladoButton")
+
+[node name="ExcededTimer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+
+[node name="XButton" type="Button" parent="."]
+offset_left = 53.0
+offset_top = 25.0
+offset_right = 84.0
+offset_bottom = 56.0
+text = "X"
+
+[node name="HeladoButton" type="Button" parent="."]
+offset_left = 147.0
+offset_top = 52.0
+offset_right = 210.0
+offset_bottom = 83.0
+text = "Helado"
+
+[node name="CompletedTimer" type="Timer" parent="."]
+wait_time = 7.0
+one_shot = true
+
+[connection signal="timeout" from="ExcededTimer" to="." method="_on_progress_timer_timeout"]
+[connection signal="pressed" from="XButton" to="." method="_on_x_button_pressed"]
+[connection signal="button_down" from="HeladoButton" to="." method="_on_button_2_button_down"]
+[connection signal="button_up" from="HeladoButton" to="." method="_on_button_2_button_up"]
+[connection signal="timeout" from="CompletedTimer" to="." method="_on_completed_timer_timeout"]
